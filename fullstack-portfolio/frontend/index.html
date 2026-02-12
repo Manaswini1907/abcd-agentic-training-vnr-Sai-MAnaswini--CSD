@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sai Manaswini | Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- HERO SECTION -->
+    <h1>Hi, I'm Sai Manaswini 👩‍💻</h1>
+    <p>Computer Science Student | Full Stack Learner</p>
+
+
+    <!-- CONTACT SECTION -->
+    <h2>Contact Me</h2>
+
+    <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" required>
+
+        <input type="email" id="email" placeholder="Your Email" required>
+
+        <textarea id="message" placeholder="Your Message" required></textarea>
+
+        <button type="submit">Send</button>
+    </form>
+
+
+    <!-- SKILLS SECTION -->
+    <h2>My Skills</h2>
+
+    <div class="skills">
+        <div class="skill">HTML</div>
+        <div class="skill">CSS</div>
+        <div class="skill">JavaScript</div>
+        <div class="skill">Node.js</div>
+        <div class="skill">Express</div>
+    </div>
+
+
+    <!-- PROJECTS SECTION -->
+    <h2>My Projects</h2>
+
+    <div class="projects">
+        <div class="project-card">
+            <h3>Portfolio Website</h3>
+            <p>Full stack portfolio using Node.js and Express backend.</p>
+        </div>
+
+        <div class="project-card">
+            <h3>Pollution Free Route Finder</h3>
+            <p>Python-based system to find less polluted travel routes.</p>
+        </div>
+    </div>
+
+
+    <!-- JAVASCRIPT FOR FORM SUBMISSION -->
+    <script>
+        document.getElementById("contactForm").addEventListener("submit", async function(e) {
+            e.preventDefault();
+
+            const data = {
+                name: document.getElementById("name").value,
+                email: document.getElementById("email").value,
+                message: document.getElementById("message").value
+            };
+
+            const response = await fetch("http://localhost:5000/contact", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify(data)
+            });
+
+            const result = await response.json();
+            alert(result.message);
+
+            // Clear form after submission
+            document.getElementById("contactForm").reset();
+        });
+    </script>
+
+</body>
+</html>
